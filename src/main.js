@@ -17,10 +17,8 @@ const routes = [
     { path: '/dashboard', component: Dashboard, name: 'dashboard' },
     { path: '/categories', component: () => import('./pages/Categories.vue'), name: 'categories' },
     { path: '/categories/:id', component: () => import('./pages/Category.vue'), name: 'category' },
-    { path: '/games/:id', component: () => import('./pages/Game.vue'), name: 'game' },
-    { path: '/platforms', component: () => import('./pages/Platforms.vue'), name: 'platforms' },
-    { path: '/platforms/:id', component: () => import('./pages/Platform.vue'), name: 'platform' },
-    { path: '/collection', component: () => import('./pages/Collection.vue'), name: 'collection' },
+    { path: '/products/new', component: () => import('./pages/NewProduct.vue'), name: 'newproduct' },
+    { path: '/products/:id', component: () => import('./pages/Product.vue'), name: 'product' },
 ]
 
 const router = VueRouter.createRouter({

@@ -1,8 +1,9 @@
 //
 
-$primary: #2DD2AB;
-$secondary: #84cc41;
-$bootstrap-icons-font-dir: "https://tinygames.rckt.com.br/fonts";
+$primary: #24BAA8;
+$secondary: #F08436;
+// $bootstrap-icons-font-dir: "https://tinyshops.rckt.com.br/fonts";
+$bootstrap-icons-font-dir: "./fonts";
 
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.scss";

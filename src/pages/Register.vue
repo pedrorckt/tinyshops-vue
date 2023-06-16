@@ -4,7 +4,7 @@
         <main class="form-register w-100 m-auto">
             <form @submit.prevent="register">
                 
-                <img class="rounded mb-4" src="https://storage.googleapis.com/tinygames/images/tinygames.svg?a" alt="TinyGames" width="128" height="128">
+                <img class="rounded mb-4" src="https://storage.googleapis.com/tinyshops/images/tinyshops.svg" alt="TinyShops" width="128" height="128">
                 
                 <h1 class="h3 mb-3 fw-normal">Create your account</h1>
                 

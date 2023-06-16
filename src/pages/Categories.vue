@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col my-2">
                 <h1>Categories</h1>
-                <p>Here you can find all game categories.</p>
+                <p>Here you can find all product categories.</p>
             </div>
         </div>
 

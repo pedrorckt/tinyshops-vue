@@ -4,7 +4,7 @@
         <main class="form-signin w-100 m-auto">
             <form @submit.prevent="login()">
                 
-                <img class="rounded mb-4" src="https://storage.googleapis.com/tinygames/images/tinygames.svg?a" alt="TinyGames" width="128" height="128">
+                <img class="rounded mb-4" src="https://storage.googleapis.com/tinyshops/images/tinyshops.svg?a" alt="TinyShops" width="128" height="128">
                 
                 <h1 class="h3 mb-3 fw-normal">Please log</h1>
                 

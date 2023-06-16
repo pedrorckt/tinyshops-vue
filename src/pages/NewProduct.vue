@@ -25,6 +25,13 @@
                     <input type="url" class="form-control" id="image" v-model="image">
                     <label for="image">Image link</label>
                 </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" id="is_pinned">
+                    <label class="form-check-label" for="is_pinned">
+                        Top
+                    </label>
+                </div>
                 
                 <button class="btn btn-primary w-100 py-2" type="submit">Create</button>
 
