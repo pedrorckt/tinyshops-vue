@@ -54,8 +54,8 @@ export default {
                 email: this.email,
                 password: this.password,
             }, {withCredentials: true}).then(response => {
-                localStorage.setItem("auth", "logged");
-                window.location.href = '/#/dashboard';
+                localStorage.setItem('auth', 'logged');
+                window.location.href = '?logged/#/dashboard';
             }).catch(error => {
                 this.error = error.response.data?.message;
             });

@@ -65,6 +65,7 @@ export default {
                 password: this.password,
                 password_confirmation: this.password_confirmation,
             }, {withCredentials: true}).then(response => {
+                localStorage.setItem('auth', 'logged');
                 window.location.href = '/#/dashboard';
             }).catch(error => {
                 this.error = error.response.data?.message;

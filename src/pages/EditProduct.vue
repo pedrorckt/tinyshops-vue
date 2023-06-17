@@ -2,7 +2,7 @@
 
     <div class="d-flex align-items-center py-4">
         <main class="form-signin w-100 m-auto">
-            <form @submit.prevent="create()">
+            <form @submit.prevent="update()">
                 
                 <h1 class="h3 mb-3 fw-normal">New product</h1>
                 
@@ -33,7 +33,7 @@
                     </label>
                 </div>
                 
-                <button class="btn btn-primary w-100 py-2" type="submit">Create</button>
+                <button class="btn btn-primary w-100 py-2" type="submit">Update</button>
 
                 <p class="text-danger my-2" v-if="error">{{ error }}</p>
 
@@ -60,9 +60,20 @@ export default {
             error: '',
         }
     },
+    mounted() {
+        axios.get('http://localhost:8000/api/products/' + this.$route.params.id, {withCredentials: true}).then(response => {
+            this.name = response.data.name;
+            this.description = response.data.description;
+            this.price = response.data.price / 100;
+            this.image = response.data.image;
+            this.is_pinned = response.data.is_pinned;
+        }).catch(error => {
+            this.error = error.response.data?.message;
+        });
+    },
     methods: {
-        create() {
-            axios.post('http://localhost:8000/api/products', {
+        update() {
+            axios.put('http://localhost:8000/api/products/' + this.$route.params.id, {
                 name: this.name,
                 description: this.description,
                 price: Math.round(this.price * 100),

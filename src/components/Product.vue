@@ -21,10 +21,11 @@
                         Categories: <span v-for="(category, i) in product.categories">{{ (i != 0) ? ',' : '' }} <router-link :to="'/categories/' + category.id" >{{ category.name }}</router-link></span>
                     </small>
                 </p>
+                <div v-if="mine">
+                    <router-link class="btn btn-primary me-2" :to="'/products/' + product.id + '/edit'"><i class="bi bi-pencil-square"></i> Edit</router-link>
+                    <button class="btn btn-light" @click="deleteProduct"><i class="bi bi-trash"></i> Delete</button>
+                </div>
             </div>
-
-            
-
         </div>
     </div>
 
@@ -35,7 +36,18 @@ export default {
     name: 'Product',
     props: ['product', 'me'],
     methods: {
-        //
+        deleteProduct() {
+            console.log('delete', this.product.id);
+            this.$emit('delete', this.product.id);
+        },
     },
+    data() {
+        return {
+            mine: false,
+        }
+    },
+    mounted() {
+        this.mine = this.me?.shop_id == this.product.shop_id;
+    }
 }
 </script>

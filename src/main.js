@@ -19,6 +19,8 @@ const routes = [
     { path: '/categories/:id', component: () => import('./pages/Category.vue'), name: 'category' },
     { path: '/products/new', component: () => import('./pages/NewProduct.vue'), name: 'newproduct' },
     { path: '/products/:id', component: () => import('./pages/Product.vue'), name: 'product' },
+    { path: '/products/:id/edit', component: () => import('./pages/EditProduct.vue'), name: 'editProduct' },
+    { path: '/seen', component: () => import('./pages/Seen.vue'), name: 'seen' },
 ]
 
 const router = VueRouter.createRouter({

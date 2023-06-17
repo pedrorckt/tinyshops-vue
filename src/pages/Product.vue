@@ -43,7 +43,7 @@
                 <div id="productCarousel" class="carousel slide" v-if="product.images">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img :src="product.images[0].url" class="d-block w-100">
+                            <img :src="product.images[0]?.url" class="d-block w-100">
                         </div>
                         <div class="carousel-item" v-for="image in product.images?.slice(1)">
                             <img :src="image.url" class="d-block w-100">
@@ -91,13 +91,23 @@ export default {
     },
     mounted() {
         axios.get('http://localhost:8000/api/products/' + this.$route.params.id)
-            .then(response => {
-                this.product = response.data;
-                this.initCarousel();
-            })
-            .catch(error => {
-                console.log(error);
-            });
+        .then(response => {
+            this.product = response.data;
+            this.initCarousel();
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        let seen = localStorage.getItem("seen");
+        seen = seen ? JSON.parse(seen) : [];
+        seen.unshift(this.$route.params.id);
+        seen = [...new Set(seen)];
+        console.log(seen);
+        if (seen.length > 10) {
+            seen.pop();
+        }
+        localStorage.setItem("seen", JSON.stringify(seen));
     }
 }
 </script>

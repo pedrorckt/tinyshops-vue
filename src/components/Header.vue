@@ -9,6 +9,7 @@
 
         <ul class="nav col-12 col-lg-auto ms-3 me-lg-auto mb-2 justify-content-center mb-md-0">
           <li class="nav-item"><router-link class="nav-link px-2 text-body-secondary" to="/categories">Categories</router-link></li>
+          <li class="nav-item"><router-link class="nav-link px-2 text-body-secondary" to="/seen">Last seen</router-link></li>
           <li class="nav-item" v-if="auth"><router-link class="nav-link px-2 text-body-secondary" to="/dashboard">Dashboard</router-link></li>
         </ul>
 
@@ -21,7 +22,7 @@
             <img src="https://storage.googleapis.com/tinyshops/images/tinyshops_t.svg" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small">
-            <li><router-link class="dropdown-item" to="/collection">New collection...</router-link></li>
+            <li><router-link class="dropdown-item" to="/products/new">New product...</router-link></li>
             <li><router-link class="dropdown-item" to="/dashboard">Dashboard</router-link></li>
             <!-- <li><router-link class="dropdown-item" to="#">Profile</router-link></li> -->
             <li><hr class="dropdown-divider"></li>
@@ -47,17 +48,17 @@ export default {
   name: 'Header',
   data() {
     return {
-      auth: (localStorage.getItem('auth') == 'logged')
+      auth: (localStorage.getItem('auth'))
     }
   },
   methods: {
     logout() {
       axios.post('http://localhost:8000/logout', null, {withCredentials: true}).then(response => {
-          if (response.status === 302 || 401 || 404) {
-            localStorage.removeItem('auth');
-            window.location.href = '/';
-          }
+          localStorage.removeItem('auth');
+          window.location.href = 'logout?/#/';
         }).catch(error => {
+          localStorage.removeItem('auth');
+          window.location.href = 'logout?/#/';
           console.log(error);
       });
     }
