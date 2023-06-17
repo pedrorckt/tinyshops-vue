@@ -21,7 +21,7 @@
 
         <hr>
 
-        <div class="row" v-if="auth">
+        <div class="row" v-if="mine">
             <div class="col-12">
                 <div class="row">
                     <div class="col-12">
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <hr>
+        <hr v-if="mine">
 
         <div class="row">
             <div class="col-12 my-2">
@@ -76,6 +76,8 @@ export default {
     data() {
         return {
             product: {},
+            shop_id: localStorage.getItem('shop_id'),
+            mine: false,
             auth: !!localStorage.getItem("auth"),
             collections: [],
             current: null,
@@ -90,9 +92,10 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:8000/api/products/' + this.$route.params.id)
+        axios.get('https://api.tinyshops.rckt.com.br/api/products/' + this.$route.params.id)
         .then(response => {
             this.product = response.data;
+            this.mine = this.shop_id == this.product.shop_id;
             this.initCarousel();
         })
         .catch(error => {

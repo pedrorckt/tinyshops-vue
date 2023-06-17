@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         getCategory() {
-            axios.get('http://localhost:8000/api/categories/' + this.$route.params.id + '?page=' + this.page).then(response => {
+            axios.get('https://api.tinyshops.rckt.com.br/api/categories/' + this.$route.params.id + '?page=' + this.page).then(response => {
                 this.category = response.data;
                 this.products = response.data.products?.data;
                 this.last_page = response.data.products?.last_page || 1;

@@ -62,7 +62,7 @@ export default {
     },
     methods: {
         create() {
-            axios.post('http://localhost:8000/api/products', {
+            axios.post('https://api.tinyshops.rckt.com.br/api/products', {
                 name: this.name,
                 description: this.description,
                 price: Math.round(this.price * 100),

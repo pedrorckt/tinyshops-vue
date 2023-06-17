@@ -59,14 +59,15 @@ export default {
     },
     methods: {
         register() {
-            axios.post('http://localhost:8000/register', {
+            axios.post('https://api.tinyshops.rckt.com.br/register', {
                 name: this.name,
                 email: this.email,
                 password: this.password,
                 password_confirmation: this.password_confirmation,
             }, {withCredentials: true}).then(response => {
                 localStorage.setItem('auth', 'logged');
-                window.location.href = '/#/dashboard';
+                localStorage.setItem('shop_id', response.data.user.shop_id);
+                window.location.href = '/?d#/dashboard';
             }).catch(error => {
                 this.error = error.response.data?.message;
             });

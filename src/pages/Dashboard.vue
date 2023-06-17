@@ -50,7 +50,7 @@ export default {
     methods: {
 
         getMe() {
-            axios.get('http://localhost:8000/api/me?page=' + this.page, {withCredentials: true}).then(response => {
+            axios.get('https://api.tinyshops.rckt.com.br/api/me?page=' + this.page, {withCredentials: true}).then(response => {
                 this.user = response.data;
                 this.products = response.data.products?.data || [];
                 this.last_page = response.data.products?.last_page || 1;
@@ -62,7 +62,7 @@ export default {
 
         deleteProduct(id) {
             if (!confirm('Are you sure you want to delete this product?')) return;
-            axios.delete('http://localhost:8000/api/products/' + id, {withCredentials: true}).then(response => {
+            axios.delete('https://api.tinyshops.rckt.com.br/api/products/' + id, {withCredentials: true}).then(response => {
                 this.getMe();
             }).catch(error => {
                 console.log(error.response.data);

@@ -50,7 +50,7 @@ export default {
             let seen = localStorage.getItem('seen');
             seen = seen ? JSON.parse(seen) : [];
             if (!seen.length) {this.products = []; return;}
-            axios.get('http://localhost:8000/api/products?ids=' + seen.join(',') + '&page=' + this.page).then(response => {
+            axios.get('https://api.tinyshops.rckt.com.br/api/products?ids=' + seen.join(',') + '&page=' + this.page).then(response => {
                 this.products = response.data.data;
                 this.last_page = response.data.last_page || 1;
                 this.total = response.data.total;

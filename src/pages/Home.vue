@@ -68,7 +68,7 @@ export default {
 
         getProducts() {
 
-            let url = 'http://localhost:8000/api/products?page=' + this.page;
+            let url = 'https://api.tinyshops.rckt.com.br/api/products?page=' + this.page;
             
             if (this.orderby != 'default') {
                 url += '&orderby=' + this.orderby + '&order=' + this.order

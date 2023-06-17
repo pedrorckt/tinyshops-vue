@@ -61,7 +61,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:8000/api/products/' + this.$route.params.id, {withCredentials: true}).then(response => {
+        axios.get('https://api.tinyshops.rckt.com.br/api/products/' + this.$route.params.id, {withCredentials: true}).then(response => {
             this.name = response.data.name;
             this.description = response.data.description;
             this.price = response.data.price / 100;
@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         update() {
-            axios.put('http://localhost:8000/api/products/' + this.$route.params.id, {
+            axios.put('https://api.tinyshops.rckt.com.br/api/products/' + this.$route.params.id, {
                 name: this.name,
                 description: this.description,
                 price: Math.round(this.price * 100),

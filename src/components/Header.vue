@@ -53,12 +53,14 @@ export default {
   },
   methods: {
     logout() {
-      axios.post('http://localhost:8000/logout', null, {withCredentials: true}).then(response => {
+      axios.post('https://api.tinyshops.rckt.com.br/logout', null, {withCredentials: true}).then(response => {
           localStorage.removeItem('auth');
-          window.location.href = 'logout?/#/';
+          localStorage.removeItem('shop_id');
+          window.location.href = '/?logout#/';
         }).catch(error => {
           localStorage.removeItem('auth');
-          window.location.href = 'logout?/#/';
+          localStorage.removeItem('shop_id');
+          window.location.href = '/?logout#/';
           console.log(error);
       });
     }
